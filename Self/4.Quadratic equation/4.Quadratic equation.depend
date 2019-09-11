@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1559028254 source:e:\projects self\codeblocks\4.quadratic equation\main.cpp
+	<iostream>
+	<math.h>
+
