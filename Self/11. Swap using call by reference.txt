@@ -2,12 +2,11 @@
 
 using namespace std;
 
-void swap(float *a,float *b)
+void swap(float &a,float &b)
 {
-    float temp = *a;
-    *a = *b;
-    *b = temp;
-
+    float temp = a;
+    a = b;
+    b = temp;
 }
 
 int main()
@@ -18,8 +17,8 @@ int main()
     cin>>x>>y;
     cout<<"Initial values at position 1 is "<<x<<" and at position 2 is "<<y<<endl;
     cout<<"After swapping the values are "<<endl;
-    swap(&x,&y);
-    cout<<x<<" "<<y;
+    swap(x,y);
+    cout<<x<<" "<<y<<endl;
     return 0;
 }
 
