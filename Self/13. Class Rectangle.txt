@@ -16,7 +16,7 @@ public:
     float perimeter()
     {
         cout<<"\nPerimeter of the rectangle is "<<endl;
-        return 2*(length+breadth);
+        return (2*(length+breadth));
     }
 };
 
