@@ -1,5 +1,7 @@
 #include<iostream>
+
 using namespace std;
+
 class Bank{
     char name_of_depositor[30];
     int Acc_no;
@@ -22,12 +24,15 @@ public:
         cout<<"Enter Balance ";
         cin>>Balance;   
      }
-    void Deposit(){
+    void Deposit()
+    {
         double deposit;
         cout<<"Enter the Amount to deposit: ";
         cin>>deposit;
-        Balance += deposit;    }
-    void Withdraw(){
+        Balance += deposit;  
+    }
+    void Withdraw()
+    {
         double Amount;
         cout<<"Enter Amount to withdraw ";
         cin>>Amount;
@@ -36,14 +41,18 @@ public:
         else
             cout<<"Less Balance \n";
     }
-    void Display(){
-    cout<<"\t\t:Customer Details:\n\n";
-    cout<<"Name: "<<name_of_depositor<<"\n";
-    cout<<"Account No.: "<<Acc_no<<"\n";
-    cout<<"Account Type: "<<type_of_account<<"\n";
-    cout<<"Balance: "<<Balance<<"\n";    }
+    void Display()
+    {
+        cout<<"\t\t:Customer Details:\n\n";
+        cout<<"Name: "<<name_of_depositor<<"\n";
+        cout<<"Account No.: "<<Acc_no<<"\n";
+        cout<<"Account Type: "<<type_of_account<<"\n";
+        cout<<"Balance: "<<Balance<<"\n";    
+    }
 };
-int main(){
+
+int main()
+{
     Bank b;
     int option;
     cout<<"\t\t ---- Welcome to Bank ----";
