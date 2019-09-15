@@ -6,9 +6,13 @@ class Bank{
     char type_of_account[20];
     int Balance;
 public:
-    Bank(){
-       	 Acc_no = 0;        Balance = 0;    }
-    void Details(){
+    Bank()
+    {
+       	 Acc_no = 0;     
+         Balance = 0;
+    }
+    void Details()
+    {
         cout<<"Enter your full Name ";
         cin>>name_of_depositor;
         cout<<"Account Number ";
@@ -16,7 +20,8 @@ public:
         cout<<"Type of Account: ";
         cin>>type_of_account;
         cout<<"Enter Balance ";
-        cin>>Balance;    }
+        cin>>Balance;   
+     }
     void Deposit(){
         double deposit;
         cout<<"Enter the Amount to deposit: ";
