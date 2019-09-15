@@ -61,11 +61,16 @@ int main()
         cout<<"choose option: ";
         cin>>option;
         switch(option){
-            case 1: b.Details();break;
-            case 2: b.Deposit();break;
-            case 3: b.Withdraw();break;
-            case 4: b.Display();break;
-            case 5: cout<<"Have a nice day.....";break;
+            case 1: b.Details();
+                    break;
+            case 2: b.Deposit();
+                    break;
+            case 3: b.Withdraw();
+                    break;
+            case 4: b.Display();
+                    break;
+            case 5: cout<<"Have a nice day.....";
+                    break;
             default: cout<<"Enter valid option";
         }
     }while(option != 5);
