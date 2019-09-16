@@ -13,13 +13,11 @@ public:
         cout<<"\nArea of the rectangle is "<<endl;
         return length*breadth;
     }
-
     float perimeter()
     {
         cout<<"\nPerimeter of the rectangle is "<<endl;
         return 2*(length+breadth);
     }
-
 };
 
 int main()
