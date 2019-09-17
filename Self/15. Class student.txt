@@ -1,5 +1,4 @@
 #include<iostream>
-
 using namespace std;
 
 class student {
@@ -50,4 +49,5 @@ int main()
 	student s(roll, name, m, p, c);
 	cout << "Total Marks:" << s.total() << endl;
 	cout << "Grade of Student:" << s.grade() << endl;
+	return 0;
 }
