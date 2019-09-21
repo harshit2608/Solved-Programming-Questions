@@ -8,7 +8,6 @@ void swap(float a,float b)
     a = b;
     b = temp;
     cout<<a<<" " <<b<<endl;
-
 }
 
 int main()
