@@ -1,6 +1,7 @@
 #include<iostream>
 #include<fstream>
 #include<cstdlib>
+#include<string>
 #include<map>
 #include<vector>
 
@@ -16,11 +17,12 @@ private:
 	string lastName;
 	string address;
 	float balance;
+	long long int mobileNumber;
 	long identityProf;
 	static long nextAccountNumber;
 public:
 	Account() {};
-	Account(string fname, string lname, string address, float balance);
+	Account(string fname, string lname, string address,long long int mobileNumber, float balance);
 	long getAccountNumber()
 	{
 		return accountNumber;
@@ -36,6 +38,10 @@ public:
 	string getAddress()
 	{
 		return address;
+	}
+	long long int getMobileNumber()
+	{
+		return mobileNumber;
 	}
 	float getBalance()
 	{
@@ -59,7 +65,7 @@ private:
 	map<long, Account>accounts;
 public:
 	Bank();
-	Account openAccount(string fname, string lname, string address,float balance);
+	Account openAccount(string fname, string lname, string address,long long int mobileNumber,float balance);
 	Account balanceEnquiry(long accountNumber);
 	Account deposit(long accountNumber, float amount);
 	Account withdraw(long accountNumber, float amount);
@@ -75,6 +81,7 @@ int main()
 	int choice;
 	string fname, lname, address;
 	long accountNumber;
+	long long int mobileNumber;
 	float balance;
 	float amount;
 	cout << "\t\t***WELCOME TO BANKIG SYSTEM***" << endl;
@@ -98,9 +105,11 @@ int main()
 				cin >> lname;
 				cout << "Enter the address: ";
 				cin >> address;
+				cout << "Enter the mobile number: ";
+				cin >> mobileNumber;
 				cout << "Enter initial Balance: ";
 				cin >> balance;
-				acc = b.openAccount(fname, lname,address, balance);
+				acc = b.openAccount(fname, lname,address,mobileNumber, balance);
 				cout << endl << "Congratulations, Account is Created" << endl;
 				cout << acc;
 				break;
@@ -150,13 +159,14 @@ int main()
 	return 0;
 }
 
-Account::Account(string fname, string lname, string address, float balance)
+Account::Account(string fname, string lname, string address,long long int mobileNumber, float balance)
 {
 	nextAccountNumber++;
 	accountNumber = nextAccountNumber;
 	firstName = fname;
 	lastName = lname;
 	this->address = address;
+	this->mobileNumber = mobileNumber;
 	this->balance = balance;
 }
 
@@ -188,6 +198,7 @@ ofstream& operator<<(ofstream& ofs, Account& acc)
 	ofs << acc.firstName << endl;
 	ofs << acc.lastName << endl;
 	ofs << acc.address << endl;
+	ofs << acc.mobileNumber << endl;
 	ofs << acc.balance << endl;
 	return ofs;
 }
@@ -198,6 +209,7 @@ ifstream& operator>>(ifstream& ifs, Account& acc)
 	ifs >> acc.firstName;
 	ifs >> acc.lastName;
 	ifs >> acc.address;
+	ifs >> acc.mobileNumber;
 	ifs >> acc.balance;
 	return ifs;
 }
@@ -207,6 +219,7 @@ ostream& operator <<(ostream& os, Account& acc)
 	os << "First Name:" << acc.getFirstName() << endl;
 	os << "Last Name:" << acc.getLastName() << endl;
 	os << "Address:" << acc.getAddress() << endl;
+	os << "Mobile Number:" << acc.getMobileNumber() << endl;
 	os << "Account Number:" << acc.getAccountNumber() << endl;
 	os << "Balance:" << acc.getBalance() << endl;
 	return os;
@@ -230,10 +243,10 @@ Bank::Bank()
 	}
 }
 
-	Account Bank::openAccount(string fname, string lname, string address, float balance)
+	Account Bank::openAccount(string fname, string lname, string address,long long int mobilenumber, float balance)
 	{
 		ofstream outfile;
-		Account account(fname, lname, address, balance);
+		Account account(fname, lname, address,mobilenumber, balance);
 		accounts.insert(pair<long, Account>(account.getAccountNumber(), account));
 		outfile.open("Bank.data", ios::trunc);
 
