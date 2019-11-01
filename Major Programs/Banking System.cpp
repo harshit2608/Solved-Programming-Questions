@@ -84,7 +84,7 @@ int main()
 	long long int mobileNumber;
 	float balance;
 	float amount;
-	cout << "\t\t***WELCOME TO BANKIG SYSTEM***" << endl;
+	cout << "\t\t***WELCOME TO BANKING SYSTEM***" << endl;
 		do {
 			cout << "\n\tSelect one option below ";
 			cout << "\n\t1 Open an Account";
@@ -152,7 +152,7 @@ int main()
 				cout << "Please visit soon..." << endl;
 				break;
 			default:
-				cout << "\nEnter corret choice";
+				cout << "\nEnter correct choice";
 				exit(0);
 			}
 		} while (choice != 7);
