@@ -1,7 +1,7 @@
 # C-and-Cpp
 Contains all the c and  c++ program
 
-Using codeblocks
+Using codeblocks.
 
 
 And TURBO c++(for graphics)
