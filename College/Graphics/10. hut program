@@ -21,7 +21,7 @@ int main(){
     floodfill(252, 182, WHITE);
     setfillstyle(SLASH_FILL, BLUE);
     floodfill(182, 252, WHITE);
-    setfillstyle(HATCH_FILL, GREEN);
+    setfillstyle(HATCH_FILL, RED);
     floodfill(200, 105, WHITE);
     floodfill(210, 105, WHITE);
      
