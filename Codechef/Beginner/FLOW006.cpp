@@ -5,22 +5,20 @@ using namespace std;
 
 int main()
 {
-    /*
-    
-    TO DO
-    
-    */
-    int test_cases, sum = 0;
-    unsigned long int N = 0;
+    int test_cases, sum;
+    long int n, m;
     cin>>test_cases;
     while(test_cases--)
     {
-        cin >> N;
-        for (int i = 0; i<=to_string(N).length();i++)
+        cin >> n;
+        sum = 0;
+        while(n>0)
         {
-            sum = sum + N;
+            m = n % 10;
+            sum = sum + m;
+            n = n / 10;
         }
-        cout << sum;
+        cout << sum << endl;
     }
     return 0;
 }
