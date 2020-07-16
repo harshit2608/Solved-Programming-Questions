@@ -23,15 +23,16 @@ int main()
             cin >> x;
             a_container.push_back(x);
             count[a_container[i]]++;
-            md = min(md, a_container[i]);
+            //md = min(md, a_container[i]);
         }
+        
         for (ll i = 0; i < n; i++)
         {
             ll y;
             cin >> y;
             b_container.push_back(y);
             count[b_container[i]]++;
-            md = min(md, b_container[i]);
+            //md = min(md, b_container[i]);
         }
 
         bool flag = 1;
@@ -52,6 +53,7 @@ int main()
             cout << "-1" << endl;
             continue;
         }
+
         unordered_map<ll,ll> final = ans;
         vector<ll> v, v1;
         for (ll i = 0; i < n; i++)
@@ -65,6 +67,7 @@ int main()
                 v.push_back(a_container[i]);
             }
         }
+    
         final = ans;
         for (ll i = 0; i < n; i++)
         {
@@ -77,11 +80,13 @@ int main()
                 v1.push_back(b_container[i]);
             }
         }
+    
         if (v.size() == 0)
         {
             cout << "0" << endl;
             continue;
         }
+    
         ll put = 0;
         sort(v.begin(), v.end());
         sort(v1.rbegin(), v1.rend());
