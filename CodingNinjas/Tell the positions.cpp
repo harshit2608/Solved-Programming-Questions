@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-#define MAX (int(1e5))
 #define ll long int
 
 int main()
