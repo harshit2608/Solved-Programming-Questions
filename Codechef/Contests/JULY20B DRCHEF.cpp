@@ -38,7 +38,6 @@ int main()
             }
             x = 2 * patient[i];
         }
-zz
         ll total = lowerbound + days;
         if (lowerbound != 0)
         {
