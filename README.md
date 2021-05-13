@@ -1,12 +1,15 @@
 # C-and-Cpp
-Contains all the c and c++ program
 
-Using codeblocks.
+This repository contains solution to most of the problems from the famous competitive coding platforms.
 
-And TURBO c++(for graphics)
+## Platforms
 
-Make sure to check the BGI folder path in turboc++ 
-
-## HARSHIT
-
-Do check out my Game Engine -> [Stupefy Engine](https://github.com/Stupefy-Engine/Stupefy)
+- [Binary Search](https://binarysearch.com/)
+- [Codechef](https://www.codechef.com/)
+- [Codeforces](https://codeforces.com/)
+- [CodingNinjas](https://www.codingninjas.com/)
+- [GeeksForGeeks](https://practice.geeksforgeeks.org/explore/?)
+- [Google](https://codingcompetitions.withgoogle.com/)
+- [Hackerrank](https://www.hackerrank.com/dashboard)
+- [InterViewBit](https://www.interviewbit.com/practice/)
+- [Leet Code](https://leetcode.com/problemset/all/)
