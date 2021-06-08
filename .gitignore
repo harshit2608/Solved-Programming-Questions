@@ -1,5 +1,3 @@
-**.exe
-**.**.prob
-**.**.bin
 .vscode/
+*.exe
 .cph/

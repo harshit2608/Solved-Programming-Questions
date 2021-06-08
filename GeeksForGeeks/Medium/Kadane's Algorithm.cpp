@@ -6,7 +6,6 @@ public:
     //Function to find the sum of contiguous subarray with maximum sum.
     int maxSubarraySum(int arr[], int n)
     {
-
         int res = arr[0];
         int maxending = arr[0];
         for (int i = 1; i < n; i++)
@@ -14,7 +13,6 @@ public:
             maxending = max(maxending + arr[i], arr[i]);
             res = max(res, maxending);
         }
-
         return res;
     }
 };
