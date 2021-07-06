@@ -1,0 +1,23 @@
+class Solution
+{
+public:
+    // Return the Kth smallest element in the given BST
+    void inorder(Node *root, vector<int> &v)
+    {
+        if (root != NULL)
+        {
+            inorder(root->left, v);
+            v.push_back(root->data);
+            inorder(root->right, v);
+        }
+    }
+    int KthSmallestElement(Node *root, int k)
+    {
+        vector<int> v;
+        inorder(root, v);
+        if (k <= v.size())
+            return v[k - 1];
+        else
+            return -1;
+    }
+};

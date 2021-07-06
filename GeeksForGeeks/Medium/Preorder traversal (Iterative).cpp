@@ -1,21 +1,26 @@
 vector<int> preOrder(Node *root)
 {
-    vector<int> ans;
+    vector<int> res;
+    if (root == nullptr)
+    {
+        return res;
+    }
     stack<Node *> s;
     s.push(root);
     while (!s.empty())
     {
-        Node *temp = s.top();
-        ans.push_back(temp->data);
+        Node *curr = s.top();
+        res.push_back(curr->data);
         s.pop();
-        if (temp->right)
+        if (curr->right)
         {
-            s.push(temp->right);
+            s.push(curr->right);
         }
-        if (temp->left)
+        if (curr->left)
         {
-            s.push(temp->left);
+            s.push(curr->left);
         }
     }
-    return ans;
+
+    return res;
 }
