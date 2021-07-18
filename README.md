@@ -20,3 +20,7 @@ And if the problem you want to serach is form codechef you have to enter the pro
 - [Hackerrank](https://www.hackerrank.com/dashboard)
 - [InterViewBit](https://www.interviewbit.com/practice/)
 - [Leet Code](https://leetcode.com/problemset/all/)
+
+## ALGORITHMS
+
+Algorithms folder contain various algorithms in c++
