@@ -1,0 +1,150 @@
+# Complete DSA Bootcamp Syllabus
+
+NOTE: You can find various useful links and video tutorials at bottom of the page
+
+- [x] Arrays
+  - [x] Introduction
+  - [ ] Memory management
+  - [x] Input and Output
+  - [x] ArrayList Introduction
+  - [x] Searching
+    - [x] Linear Search
+    - [x] Binary Search
+    - [ ] Modified Binary Search
+    - [ ] Binary Search on 2D Arrays
+  - [x] Sorting
+    - [x] Insertion Sort
+    - [x] Selection Sort
+    - [x] Bubble Sort
+    - [ ] Count Sort
+    - [ ] Radix Sort
+    - [ ] Cyclic Sort
+  - [x] Sliding window
+  - [x] Two Pointer
+  - [x] Subarray Questions
+- [ ] Pattern questions
+- [ ] Strings
+  - [x] Introduction
+  - [x] How Strings work
+  - [ ] Comparison of methods
+  - [ ] Operations in Strings
+  - [ ] StringBuilder in java
+- [ ] Maths for DSA
+  - [x] Introduction
+  - [ ] Complete Bitwise Operators
+  - [x] Prime numbers
+  - [ ] HCF / LCM
+  - [x] Sieve of Eratosthenes
+  - [ ] Newton's Square Root Method
+  - [ ] Number Theory
+  - [ ] Euclidean algorithm
+  - [ ] Advanced Concepts for CP (later in the course)
+    - [ ] Bitwise + DP
+    - [ ] Extended Euclidean algorithm
+    - [x] Modulo Properties
+    - [ ] Modulo Multiplicative Inverse
+    - [ ] Linear Diophantine Equations
+    - [ ] Fermat’s Theorem
+    - [ ] Wilson's Theorem
+    - [ ] Lucas Theorem
+    - [ ] Chinese Remainder Theorem
+- [ ] Recursion
+  - [x] Introduction
+  - [x] Why recursion?
+  - [ ] Flow of recursive programs - [ ] stacks
+  - [ ] Convert recursion to iteration
+  - [ ] Tree building of function calls
+  - [x] Tail recursion
+  - [x] Sorting:
+    - [x] Merge Sort
+    - [x] Quick Sort
+  - [ ] Backtracking
+    - [ ] Sudoku Solver
+    - [ ] N-Queens
+    - [ ] N-Knights
+    - [ ] Maze problems
+  - [ ] Recursion String Problems
+  - [ ] Recursion Array Problems
+  - [ ] Recursion Pattern Problems
+  - [ ] Subset Questions
+- [ ] Space and Time Complexity Analysis
+  - [x] Introduction
+  - [x] Comparisons of various cases
+  - [x] Solving Linear Recurrence Relations
+  - [x] Solving Divide and Conquer Recurrence Relations
+  - [x] Big-O, Big-Omega, Big-Theta Notations
+  - [x] Get equation of any relation easily - best and easiest approach
+  - [ ] Complexity discussion of all the problems we do
+  - [x] Space Complexity
+  - [ ] Memory Allocation of various languages
+  - [ ] NP-Completeness and Hardness
+- [ ] Greedy Algorithms
+- [ ] Stacks & Queues
+  - [x] Introduction
+  - [ ] Interview problems
+  - [ ] Push efficient
+  - [ ] Pop efficient
+  - [ ] Queue using Stack and Vice versa
+  - [ ] Circular Queue
+- [x] Linked List
+  - [x] Introduction
+  - [x] Fast and slow pointer
+  - [x] Cycle Detection
+  - [x] Single and Doubly LinkedList
+  - [x] Reversal of LinkedList
+- [ ] Dynamic Programming
+  - [x] Introduction
+  - [x] Recursion + Recursion DP + Iteration + Iteration Space Optimized
+  - [x] Complexity Analysis
+  - [x] 0/1 Knapsack
+  - [ ] Subset Questions
+  - [ ] Unbounded Knapsack
+  - [ ] Subsequence questions
+  - [ ] String DP
+- [ ] Trees
+  - [x] Introduction
+  - [x] Binary Trees
+  - [x] Binary Search Trees
+  - [x] DFS
+  - [x] BFS
+  - [ ] AVL Trees
+  - [ ] Segment Tree
+  - [ ] Fenwick Tree / Binary Indexed Tree
+- [ ] Square Root Decomposition
+- [ ] Heaps
+  - [ ] Introduction
+  - [ ] Theory
+  - [ ] Priority Queue
+  - [ ] Heapsort
+  - [ ] Two Heaps Method
+  - [ ] k-way merge
+  - [ ] Top k elements
+  - [ ] Interval problems
+- [ ] HashMap
+  - [ ] Introduction
+  - [ ] Theory - how it works
+  - [ ] Comparisons of various forms
+  - [ ] Limitations and how to solve
+  - [ ] Map using LinkedList
+  - [ ] Map using Hash
+  - [ ] Chaining
+  - [ ] Probing
+  - [ ] Huffman-Encoder
+- [ ] Tries
+- [ ] Graphs
+  - [x] Introduction
+  - [x] BFS
+  - [x] DFS
+  - [ ] Working with graph components
+  - [ ] Minimum Spanning Trees
+  - [ ] Kruskal Algorithm
+  - [ ] Prims Algorithm
+  - [ ] Dijkstra’s shortest path algorithm
+  - [ ] Topological Sort
+  - [ ] Bellman ford
+  - [ ] A\* pathfinding Algorithm
+
+## RESOURCES AND LINKS
+
+[Graph GFG](https://www.youtube.com/playlist?list=PLqM7alHXFySEaZgcg7uRYJFBnYMLti-nh)
+[Graph Coding Blocks](https://www.youtube.com/watch?v=MTsvJUwZdS4)

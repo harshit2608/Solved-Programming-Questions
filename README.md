@@ -24,3 +24,8 @@ And if the problem you want to serach is form codechef you have to enter the pro
 ## ALGORITHMS
 
 Algorithms folder contain various algorithms in c++
+
+## RESOURCES FOLDER
+
+This folder contains various pdfs and other things that i use for reference
+You can checck out the syllabus [here](Resources/SYLLABUS.md)
