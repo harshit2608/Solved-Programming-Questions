@@ -16,39 +16,15 @@ int main()
     cin >> t;
     while (t--)
     {
-        int n, a;
-        cin >> n >> a;
-        unordered_map<int, int> mp;
-        vector<int> v;
-
+        int n, x;
+        cin >> n >> x;
+        int arr[n];
         for (int i = 0; i < n; ++i)
         {
-            int ele = 0;
-            cin >> ele;
-            v.push_back(ele);
-            mp[ele]++;
+            cin >> arr[i];
         }
-
-        int ans = 0, mini = 0;
-        for (auto it : v)
-        {
-            if ((it != it ^ a) && ans < mp[it] + mp[it ^ a])
-            {
-                ans = mp[it] + mp[it ^ a];
-                mini = mp[it ^ a];
-            }
-            else if ((it != it ^ a) && (ans == mp[it] + mp[it ^ a]) && (mini > mp[it ^ a]))
-            {
-                ans = mp[it] + mp[it ^ a];
-                mini = mp[it ^ a];
-            }
-            else if (ans < mp[it])
-            {
-                ans = mp[it];
-                mini = 0;
-            }
-        }
-        cout << ans << " " << mini << "\n";
+        int ans = 0;
+        cout << ans << "\n";
     }
     return 0;
 }
