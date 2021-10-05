@@ -193,7 +193,7 @@ void solve()
 #endif
 
     g.shortestPath(src, order, topo, ans);
-    g.longestPath(src, topo, ans);
+    // g.longestPath(src, topo, ans);
     for (ll i = 0; i < V; ++i)
     {
         if (ans[i] == INF)
