@@ -1,4 +1,9 @@
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <functional>
+
 using namespace std;
 
 #define PI 3.1415926535897932384626
@@ -16,7 +21,7 @@ using namespace std;
 #define rep(i, a, b) for (ll i = a; i < b; ++i)
 #define repi(i, a, b) for (ll i = b - 1; i >= a; --i)
 #define tc    \
-    int t;    \
+    ll t;     \
     cin >> t; \
     while (t--)
 #define fastIO                        \
@@ -27,51 +32,59 @@ using namespace std;
 class AdjListNode
 {
 public:
-    AdjListNode(int v, int weight = 0)
+    AdjListNode(ll v, ll weight = 0)
     {
         this->v = v;
         this->weight = weight;
     }
-    int getV() const { return v; }
-    int getWeight() const { return weight; }
+    ll getV() const { return v; }
+    ll getWeight() const { return weight; }
 
 private:
-    int v;
-    int weight;
+    ll v;
+    ll weight;
 };
 
 class Graph
 {
 public:
-    Graph(int V)
+    Graph(ll vertex)
+        : V(vertex)
     {
-        this->V = V;
         adj = new vector<AdjListNode>[V];
+        revadj = new vector<AdjListNode>[V];
     }
 
-    void addEdge(int u, int v, int weight)
+    void addEdge(ll u, ll v, ll weight)
     {
         AdjListNode node(v, weight);
-        adj[u].push_back(node);
+        adj[u].PB(node);
+    }
+
+    void addEdgeSCC(ll u, ll v, ll weight)
+    {
+        AdjListNode node(u, weight);
+        revadj[v].PB(node);
     }
 
     bool isCycle();
-    ll connectedComponents(); //TODO:
+    // ll connectedComponents();
     vector<ll> traversal();
     vector<ll> topologicalSort();
-    vector<ll> shortestPath(vector<ll> &topo, ll src);
-    vector<ll> longestPath(vector<ll> &topo, ll src);
-    void print(vector<ll> &ans);
+    vector<ll> shortestPath(vector<ll>& topo, ll src);
+    vector<ll> longestPath(vector<ll>& topo, ll src);
+    ll sccKosaraju();
+    void print(vector<ll>& ans);
 
 private:
-private:
-    int V;
-    vector<AdjListNode> *adj;
+    ll V;
+    vector<AdjListNode>* adj;
+    vector<AdjListNode>* revadj;
 };
 
 bool Graph::isCycle()
 {
-    function<bool(vector<bool> & visited, vector<bool> & recursion, ll src)> dfs;
+    function<bool(vector<bool>& visited, vector<bool>& recursion, ll src)> dfs;
     dfs = [&](vector<bool> visited, vector<bool> recursion, ll src)
     {
         visited[src] = true;
@@ -103,43 +116,44 @@ bool Graph::isCycle()
     return false;
 }
 
-ll Graph::connectedComponents()
-{
-    //TODO:
-    auto bfs = [&](vector<bool> visited, ll src)
-    {
-        visited[src] = true;
-        queue<ll> storage;
-        storage.push(src);
-        while (!storage.empty())
-        {
-            src = storage.front();
-            storage.pop();
-            for (AdjListNode it : adj[src])
-            {
-                if (!visited[it.getV()])
-                {
-                    visited[it.getV()] = true;
-                    storage.push(it.getV());
-                }
-            }
-        }
-    };
+// ll Graph::connectedComponents()
+// {
+//     //TODO:
+//     auto bfs = [&](vector<bool> visited, ll src)
+//     {
+//         visited[src] = true;
+//         queue<ll> storage;
+//         storage.push(src);
+//         while (!storage.empty())
+//         {
+//             src = storage.front();
+//             storage.pop();
+//             for (AdjListNode it : adj[src])
+//             {
+//                 if (!visited[it.getV()])
+//                 {
+//                     visited[it.getV()] = true;
+//                     storage.push(it.getV());
+//                 }
+//             }
+//         }
+//     };
 
-    ll ans = 0;
-    vector<bool> visited(V, false);
-    for (ll i = 0; i < V; ++i)
-    {
-        if (!visited[i])
-        {
-            bfs(visited, i);
-        }
-    }
-    return ans;
-}
+//     ll ans = 0;
+//     vector<bool> visited(V, false);
+//     for (ll i = 0; i < V; ++i)
+//     {
+//         if (!visited[i])
+//         {
+//             bfs(visited, i);
+//         }
+//     }
+//     return ans;
+// }
+
 vector<ll> Graph::traversal()
 {
-    auto bfs = [&](vector<bool> &visited, vector<ll> &ans, ll src)
+    auto bfs = [&](vector<bool>& visited, vector<ll>& ans, ll src)
     {
         visited[src] = true;
         queue<ll> storage;
@@ -171,6 +185,7 @@ vector<ll> Graph::traversal()
     }
     return ans;
 }
+
 vector<ll> Graph::topologicalSort()
 {
     vector<ll> indegree(V, 0);
@@ -208,7 +223,7 @@ vector<ll> Graph::topologicalSort()
     return ans;
 }
 
-vector<ll> Graph::shortestPath(vector<ll> &topo, ll src)
+vector<ll> Graph::shortestPath(vector<ll>& topo, ll src)
 {
     vector<ll> ans(V, INF);
     ans[src] = 0;
@@ -229,7 +244,8 @@ vector<ll> Graph::shortestPath(vector<ll> &topo, ll src)
     }
     return ans;
 }
-vector<ll> Graph::longestPath(vector<ll> &topo, ll src)
+
+vector<ll> Graph::longestPath(vector<ll>& topo, ll src)
 {
     vector<ll> ans(V, NINF);
     ans[src] = 0;
@@ -251,7 +267,61 @@ vector<ll> Graph::longestPath(vector<ll> &topo, ll src)
     return ans;
 }
 
-void Graph::print(vector<ll> &ans)
+ll Graph::sccKosaraju()
+{
+    ll ans = 0;
+    vector<bool> visited(V, false);
+    vector<ll> stack(V);
+    function<void(vector<bool>& visited, vector<ll>& stack, ll src)> dfsStack;
+    dfsStack = [&](vector<bool>& visited, vector<ll>& stack, ll src)
+    {
+        visited[src] = true;
+        for (AdjListNode it : adj[src])
+        {
+            if (!visited[it.getV()])
+            {
+                dfsStack(visited, stack, it.getV());
+            }
+        }
+        stack.PB(src);
+    };
+
+    function<void(vector<bool>& visited, ll src)> dfs;
+    dfs = [&](vector<bool>& visited, ll src)
+    {
+        visited[src] = true;
+        for (AdjListNode it : revadj[src])
+        {
+            if (!visited[it.getV()])
+            {
+                dfs(visited, it.getV());
+            }
+        }
+    };
+
+    for (ll i = 0; i < V; ++i)
+    {
+        if (!visited[i])
+        {
+            dfsStack(visited, stack, i);
+        }
+    }
+
+    visited.resize(V, false);
+    for (ll i = stack.size() - 1; i >= 0; --i)
+    {
+        ll node = stack[i];
+        if (!visited[node])
+        {
+            dfs(visited, node); //revGraph
+            ans++;
+        }
+    }
+
+    return ans;
+}
+
+void Graph::print(vector<ll>& ans)
 {
     for (ll i = 0; i < ans.size(); ++i)
     {
@@ -272,17 +342,19 @@ void solve()
     ll V, E, src;
     cin >> V >> E >> src;
     Graph g(V);
-    for (int i = 0; i < E; ++i)
+    for (ll i = 0; i < E; ++i)
     {
-        int u, v, w;
+        ll u, v, w;
         cin >> u >> v >> w;
         g.addEdge(u, v, w);
+        g.addEdgeSCC(u, v, w);
     }
     vector<ll> topo = g.topologicalSort();
     vector<ll> shortest = g.shortestPath(topo, src);
     vector<ll> longest = g.longestPath(topo, src);
     vector<ll> trav = g.traversal();
     cout << boolalpha << g.isCycle() << "\n";
+    cout << g.sccKosaraju() << "\n";
     g.print(trav);
     g.print(topo);
     g.print(shortest);
@@ -297,7 +369,7 @@ int main()
 #endif
     tc
     {
-        static int x = 1;
+        static ll x = 1;
         cout << "Case #" << x << "\n";
         solve();
         cout << "\n";
@@ -309,7 +381,7 @@ int main()
 //TODO: ===============================TESTCASES======================================
 //TODO: ==============================================================================
 
-//TestCase 1:
+//TestCase 1: ---->
 //Input->
 // 2
 // 6 7 0
@@ -320,8 +392,7 @@ int main()
 // 4 5 4
 // 2 3 6
 // 5 3 1
-
-// 7 10 1
+// 6 10 1 ===
 // 0 1 5
 // 0 2 3
 // 1 3 6
@@ -333,7 +404,7 @@ int main()
 // 3 4 -1
 // 4 5 -2
 
-//Output->
+//Output 1 ->
 // Case #1
 // false
 // 0 1 4 2 5 3
@@ -347,3 +418,15 @@ int main()
 // 0 1 2 3 4 5
 // INF 0 2 6 5 3
 // INF 0 2 9 8 10
+
+// TESTCASE 2: ---->
+// 1
+// 7 8 0
+// 2 1 0
+// 1 0 0
+// 0 2 0
+// 0 3 0
+// 3 5 0
+// 5 6 0
+// 6 3 0
+// 3 4 0

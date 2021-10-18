@@ -253,37 +253,37 @@ void Graph::shortestCycle(ll &ans)
 
 void Graph::isBiPartite(ll src)
 {
-    vector<ll> visited(m_Vertices, 0);
-    ll parent = -1, node = 0, color = 1;
-    function<bool(vector<ll> & visited, ll parent, ll node, ll color)> dfs;
-    dfs = [&](vector<ll> &visited, ll parent, ll node, ll color)
-    {
-        visited[node] = color;
-        for (auto it : adj[node])
+        vector<ll> visited(m_Vertices, 0);
+        ll parent = -1, node = 0, color = 1;
+        function<bool(vector<ll> & visited, ll parent, ll node, ll color)> dfs;
+        dfs = [&](vector<ll> &visited, ll parent, ll node, ll color)
         {
-            if (visited[it] == 0)
+            visited[node] = color;
+            for (auto it : adj[node])
             {
-                if (!dfs(visited, node, it, 3 - color))
+                if (visited[it] == 0)
+                {
+                    if (!dfs(visited, node, it, 3 - color))
+                    {
+                        return false;
+                    }
+                }
+                else if (it != parent && visited[it] == color)
                 {
                     return false;
                 }
             }
-            else if (it != parent && visited[it] == color)
-            {
-                return false;
-            }
-        }
-        return true;
-    };
+            return true;
+        };
 
-    if (dfs(visited, parent, src, color) == true)
-    {
-        cout << "Non Bipartite\n";
-    }
-    else
-    {
-        cout << "Bipartite\n";
-    }
+        if (dfs(visited, parent, src, color) == true)
+        {
+            cout << "Non Bipartite\n";
+        }
+        else
+        {
+            cout << "Bipartite\n";
+        }
 }
 
 ll Graph::connectedComponents()

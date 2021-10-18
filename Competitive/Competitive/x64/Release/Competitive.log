@@ -1,0 +1,9 @@
+﻿  Source.cpp
+F:\Competitive\C-and-Cpp-\Competitive\Competitive\Source.cpp(230,22): warning C4018: '<': signed/unsigned mismatch
+F:\Competitive\C-and-Cpp-\Competitive\Competitive\Source.cpp(252,22): warning C4018: '<': signed/unsigned mismatch
+F:\Competitive\C-and-Cpp-\Competitive\Competitive\Source.cpp(326,22): warning C4018: '<': signed/unsigned mismatch
+  Generating code
+  Previous IPDB and IOBJ mismatch, fall back to full compilation.
+  All 520 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Competitive.vcxproj -> F:\Competitive\C-and-Cpp-\Competitive\x64\Release\Competitive.exe
