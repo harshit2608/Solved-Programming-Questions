@@ -68,6 +68,7 @@ public:
     vector<ll> topologicalSort();
     vector<ll> shortestPath(vector<ll> &topo, ll src);
     vector<ll> longestPath(vector<ll> &topo, ll src);
+    vector<ll> minTime();
     ll sccKosaraju();
     void print(vector<ll> &ans);
 
@@ -311,7 +312,7 @@ ll Graph::sccKosaraju()
         if (!visited2[node])
         {
             cout << "Component " << compo << " --> ";
-            dfs(visited2, node); //revGraph
+            dfs(visited2, node); // revGraph
             cout << "\n";
             compo++;
             ans++;
@@ -337,6 +338,44 @@ void Graph::print(vector<ll> &ans)
     cout << "\n";
 }
 
+vector<ll> Graph::minTime()
+{
+    vector<ll> indegree(V, 0);
+    vector<ll> ans(V);
+    for (ll i = 0; i < V; ++i)
+    {
+        for (AdjListNode it : adj[i])
+        {
+            indegree[it.getV()]++;
+        }
+    }
+    queue<ll> q;
+    for (ll i = 0; i < V; ++i)
+    {
+        if (indegree[i] == 0)
+        {
+            q.push(i);
+            ans[i] = 1;
+        }
+    }
+    while (!q.empty())
+    {
+        ll f = q.front();
+        // ans.PB(f);
+
+        q.pop();
+        for (AdjListNode it : adj[f])
+        {
+            indegree[it.getV()]--;
+            if (indegree[it.getV()] == 0)
+            {
+                ans[it.getV()] = ans[f] + 1;
+                q.push(it.getV());
+            }
+        }
+    }
+    return ans;
+}
 void solve()
 {
     ll V, E, src;
@@ -349,16 +388,18 @@ void solve()
         g.addEdge(u, v, w);
         g.addEdgeSCC(u, v, w);
     }
-    vector<ll> topo = g.topologicalSort();
-    vector<ll> shortest = g.shortestPath(topo, src);
-    vector<ll> longest = g.longestPath(topo, src);
-    vector<ll> trav = g.traversal();
-    cout << boolalpha << g.isCycle() << "\n";
-    cout << g.sccKosaraju() << "\n";
-    g.print(trav);
-    g.print(topo);
-    g.print(shortest);
-    g.print(longest);
+    // vector<ll> topo = g.topologicalSort();
+    // vector<ll> shortest = g.shortestPath(topo, src);
+    // vector<ll> longest = g.longestPath(topo, src);
+    // vector<ll> trav = g.traversal();
+    // cout << boolalpha << g.isCycle() << "\n";
+    // cout << g.sccKosaraju() << "\n";
+    // g.print(trav);
+    // g.print(topo);
+    // g.print(shortest);
+    // g.print(longest);
+    vector<ll> minitime = g.minTime();
+    g.print(minitime);
 }
 
 int main()
@@ -378,46 +419,46 @@ int main()
     return 0;
 }
 
-//TODO: ===============================TESTCASES======================================
-//TODO: ==============================================================================
+// TODO: ===============================TESTCASES======================================
+// TODO: ==============================================================================
 
-//TestCase 1: ---->
-//Input->
-// 2
-// 6 7 0
-// 0 1 2
-// 0 4 1
-// 1 2 3
-// 4 2 2
-// 4 5 4
-// 2 3 6
-// 5 3 1
-// 6 10 1 ===
-// 0 1 5
-// 0 2 3
-// 1 3 6
-// 1 2 2
-// 2 4 4
-// 2 5 2
-// 2 3 7
-// 3 5 1
-// 3 4 -1
-// 4 5 -2
+// TestCase 1: ---->
+// Input->
+//  2
+//  6 7 0
+//  0 1 2
+//  0 4 1
+//  1 2 3
+//  4 2 2
+//  4 5 4
+//  2 3 6
+//  5 3 1
+//  6 10 1 ===
+//  0 1 5
+//  0 2 3
+//  1 3 6
+//  1 2 2
+//  2 4 4
+//  2 5 2
+//  2 3 7
+//  3 5 1
+//  3 4 -1
+//  4 5 -2
 
-//Output 1 ->
-// Case #1
-// false
-// Component A --> 0
-// Component B --> 4
-// Component C --> 5
-// Component D --> 1
-// Component E --> 2
-// Component F --> 3
-// SCC: 6
-// 0 1 4 2 5 3
-// 0 1 4 2 5 3
-// 0 2 3 6 1 5
-// 0 2 5 11 1 5
+// Output 1 ->
+//  Case #1
+//  false
+//  Component A --> 0
+//  Component B --> 4
+//  Component C --> 5
+//  Component D --> 1
+//  Component E --> 2
+//  Component F --> 3
+//  SCC: 6
+//  0 1 4 2 5 3
+//  0 1 4 2 5 3
+//  0 2 3 6 1 5
+//  0 2 5 11 1 5
 
 // Case #2
 // false
@@ -445,14 +486,14 @@ int main()
 // 6 3 0
 // 3 4 0
 
-//OUTPUT 2-->
-// Case #1
-// true
-// Component A --> 0 1 2
-// Component B --> 3 6 5
-// Component C --> 4
-// SCC: 3
-// 0 2 3 1 5 4 6
+// OUTPUT 2-->
+//  Case #1
+//  true
+//  Component A --> 0 1 2
+//  Component B --> 3 6 5
+//  Component C --> 4
+//  SCC: 3
+//  0 2 3 1 5 4 6
 
 // 0 INF INF INF INF INF INF
 // 0 INF INF INF INF INF INF

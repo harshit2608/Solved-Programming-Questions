@@ -4,7 +4,7 @@ This repository contains solution to most of the problems from the famous compet
 
 ## How to use
 
-Press `t` on the page then it will provide you with teh ability to search files by name present in the repository.
+Press `t` on the page then it will provide you with the ability to search files by name present in the repository.
 
 You can enter the name of the problems in case of GFG, interviewbit, hackerrank, google, binarysearch, leetcode.
 And if the problem you want to serach is form codechef you have to enter the problem code.
